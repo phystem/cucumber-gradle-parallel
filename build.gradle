@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+    id "se.thinkcode.cucumber-runner" version "0.0.8"
+}
+
+group 'org.example'
+version '1.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'io.cucumber:cucumber-java8:5.1.0'
+    testImplementation 'io.cucumber:cucumber-junit:5.1.0'
+}
+
+
+cucumber {
+    threads = '5'
+    glue = 'classpath:example'
+    strict = 'true'
+    plugin = ['pretty', 'html:result']
+    featurePath = 'src/test/resources'
+    main = 'io.cucumber.core.cli.Main'
+}
